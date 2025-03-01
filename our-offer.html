@@ -3,153 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Price List - Offers</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"> 
+    <title>Current Offers</title>
     <style>
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: white;
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            text-align: center;
         }
-        .price-list-container {
-            max-width: 1000px;
+
+        .container {
+            width: 100%;
+            max-width: 100%;
             margin: auto;
-            padding: 20px;
+            padding: 0;
         }
-        .header {
-            background: linear-gradient(90deg, #003A82, #0056b3);
-            color: white;
-            text-align: center;
-            padding: 20px;
-            border-radius: 12px;
-            font-size: 28px;
-            font-weight: 600;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 20px 0;
-        }
-        .card {
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-align: center;
-        }
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
-        .card img {
-            width: 60px;
-            height: 60px;
-            object-fit: contain;
-            margin-bottom: 15px;
-        }
-        .bank-name {
-            font-size: 20px;
-            font-weight: bold;
-            color: #003A82;
-        }
-        .account-type {
-            font-size: 16px;
-            color: #555;
-            margin: 5px 0;
-        }
-        .offer {
-            font-size: 22px;
-            font-weight: 600;
-            color: #28a745;
-            margin-top: 10px;
-        }
-        .footer {
-            text-align: center;
+
+        h2 {
+            background-color: #003366;
             padding: 15px;
-            font-size: 14px;
-            color: #666;
-        }
-        .button-container {
+            font-size: 24px;
             text-align: center;
-            margin: 20px 0;
-        }
-        .btn {
-            display: inline-block;
-            padding: 14px 28px;
-            background-color: #003A82;
+            margin: 0;
             color: white;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 0;
+            background-color: #1e1e1e;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #444;
             font-size: 16px;
-            font-weight: 600;
-            text-decoration: none;
+        }
+
+        th {
+            background-color: #222;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        td img {
+            width: 45px;
+            height: 45px;
+            border-radius: 5px;
+            display: block;
+            margin: auto;
+        }
+
+        .offer {
+            color: #00ff00;
+            font-weight: bold;
+        }
+
+        /* Contact Us Section */
+        .contact-section {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #1e1e1e;
+            text-align: center;
             border-radius: 8px;
-            transition: background 0.3s, transform 0.2s;
-            margin: 0 10px;
         }
-        .btn:hover {
-            background-color: #0056b3;
-            transform: scale(1.05);
+
+        .contact-section a {
+            text-decoration: none;
+            color: #00aced;
+            font-size: 18px;
+            font-weight: bold;
         }
-        @media (max-width: 600px) {
-            .header {
-                font-size: 24px;
-            }
-            .btn {
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            th, td {
+                padding: 12px;
                 font-size: 14px;
-                padding: 12px 20px;
+            }
+
+            td img {
+                width: 35px;
+                height: 35px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="price-list-container">
-        <div class="header">Exclusive Offers Just for You!</div>
-        <div class="card-grid">
-            <div class="card">
-                <img src="https://s.tfrbot.com/h/tNrqjm" alt="Trust Bank">
-                <div class="bank-name">Trust Bank</div>
-                <div class="account-type">SAVINGS</div>
-                <div class="offer">$2500</div>
-            </div>
-            <div class="card">
-                <img src="https://s.tfrbot.com/h/nMCRZW" alt="SCB Bank">
-                <div class="bank-name">SCB Bank</div>
-                <div class="account-type">e$aver Savings</div>
-                <div class="offer">$2000</div>
-            </div>
-            <div class="card">
-                <img src="https://s.tfrbot.com/h/KZLjMf" alt="OCBC Bank">
-                <div class="bank-name">OCBC Bank</div>
-                <div class="account-type">FRANK</div>
-                <div class="offer">$1800</div>
-            </div>
-            <div class="card">
-                <img src="https://s.tfrbot.com/h/BGAkVc" alt="CIMB Bank">
-                <div class="bank-name">CIMB Bank</div>
-                <div class="account-type">StarSaver</div>
-                <div class="offer">$2500</div>
-            </div>
-            <div class="card">
-                <img src="https://s.tfrbot.com/h/Fi81xN" alt="YouTrip">
-                <div class="bank-name">YouTrip</div>
-                <div class="account-type">E-Wallets</div>
-                <div class="offer">$300</div>
-            </div>
-            <div class="card">
-                <img src="https://s.tfrbot.com/h/Jthc94" alt="Coinbase">
-                <div class="bank-name">Coinbase</div>
-                <div class="account-type">Crypto-Wallet</div>
-                <div class="offer">$700</div>
-            </div>
-        </div>
-        <div class="footer">Sell your account for a hefty sum to be paid in just one working day.</div>
-    </div>
-    <div class="button-container">
-        <a href="https://s.tfrbot.com/pJ42sj" class="btn">Questions?</a>
-        <a href="https://t.me/sgbeng" class="btn">Proceed</a>
-    </div>
+
+<div class="container">
+    <h2>Current Offers</h2>
+    <table>
+        <tr>
+            <th>Logo</th>
+            <th>Bank</th>
+            <th>Offer</th>
+        </tr>
+        <tr>
+            <td><img src="https://s.tfrbot.com/h/CusZtn" alt="Trust Bank"></td>
+            <td>Trust Bank</td>
+            <td class="offer">$2500</td>
+        </tr>
+        <tr>
+            <td><img src="https://s.tfrbot.com/h/mPy3he" alt="GXS Bank"></td>
+            <td>GXS Bank</td>
+            <td class="offer">$2500</td>
+        </tr>
+        <tr>
+            <td><img src="https://s.tfrbot.com/h/fwjdLx" alt="SCB Bank"></td>
+            <td>SCB Bank</td>
+            <td class="offer">$2000</td>
+        </tr>
+        <tr>
+            <td><img src="https://s.tfrbot.com/h/JVLi3P" alt="OCBC Bank"></td>
+            <td>OCBC Bank</td>
+            <td class="offer">$1800</td>
+        </tr>
+        <tr>
+            <td><img src="https://s.tfrbot.com/h/8JXwct" alt="UOB BANK"></td>
+            <td>UOB BANK</td>
+            <td class="offer">$2000</td>
+        </tr>
+        <tr>
+            <td><img src="https://s.tfrbot.com/h/Dmhq4e" alt="CIMB BANK"></td>
+            <td>CIMB BANK</td>
+            <td class="offer">$2500</td>
+        </tr>
+        <tr>
+            <td><img src="https://s.tfrbot.com/h/WEqSdm" alt="HSBC BANK"></td>
+            <td>HSBC BANK</td>
+            <td class="offer">$2000</td>
+        </tr>
+        <tr>
+            <td><img src="https://s.tfrbot.com/h/tY4n7I" alt="RHB BANK"></td>
+            <td>RHB BANK</td>
+            <td class="offer">$1000</td>
+        </tr>
+        <tr>
+            <td><img src="https://s.tfrbot.com/h/sMR5U4" alt="MAY BANK"></td>
+            <td>MAY BANK</td>
+            <td class="offer">$1000</td>
+        </tr>
+        <tr>
+            <td><img src="https://s.tfrbot.com/h/wFdpYl" alt="iChange"></td>
+            <td>iChange</td>
+            <td class="offer">$300</td>
+        </tr>
+        <tr>
+            <td><img src="https://s.tfrbot.com/h/RhH1Ln" alt="Liquid Pay"></td>
+            <td>Liquid Pay</td>
+            <td class="offer">$300</td>
+        </tr>
+        <tr>
+            <td><img src="https://s.tfrbot.com/h/Du7xlT" alt="Singtel Dash"></td>
+            <td>Singtel Dash</td>
+            <td class="offer">$300</td>
+        </tr>
+        <tr>
+            <td><img src="https://s.tfrbot.com/h/w57CL2" alt="YouTrip"></td>
+            <td>YouTrip</td>
+            <td class="offer">$300</td>
+        </tr>
+        <tr>
+            <td><img src="https://s.tfrbot.com/h/Lf3X4D" alt="Carousell"></td>
+            <td>Carousell</td>
+            <td class="offer">$1000</td>
+        </tr>
+    </table>
+</div>
+
+<!-- Contact Us Section -->
+<div class="contact-section">
+    <h2>Contact Us</h2>
+    <p>For inquiries, please reach out to us on Telegram:</p>
+    <a href="https://t.me/sgbeng" target="_blank">📩 Chat with us on Telegram</a>
+</div>
+
 </body>
 </html>
