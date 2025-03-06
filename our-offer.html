@@ -5,93 +5,188 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Current Offers</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #121212;
-            color: white;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #121212;
+        color: white;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
 
-        .container {
-            width: 100%;
-            max-width: 100%;
-            margin: auto;
-            padding: 0;
-        }
+    .container {
+        width: 100%;
+        max-width: 100%;
+        margin: auto;
+        padding: 0;
+    }
 
-        h2 {
-            background-color: #003366;
-            padding: 15px;
-            font-size: 24px;
-            text-align: center;
-            margin: 0;
-            color: white;
-        }
+    h2 {
+        background-color: #003366;
+        padding: 15px;
+        font-size: 24px;
+        text-align: center;
+        margin: 0;
+        color: white;
+    }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 0;
-            background-color: #1e1e1e;
-        }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 0;
+        background-color: #1e1e1e;
+    }
 
+    th, td {
+        padding: 15px;
+        text-align: left;
+        border-bottom: 1px solid #444;
+        font-size: 16px;
+    }
+
+    th {
+        background-color: #222;
+        font-weight: bold;
+        color: #fff;
+    }
+
+    td img {
+        width: 45px;
+        height: 45px;
+        border-radius: 5px;
+        display: block;
+        margin: auto;
+    }
+
+    .offer {
+        color: #00ff00;
+        font-weight: bold;
+    }
+
+    /* Contact Us Section */
+    .contact-section {
+        margin-top: 30px;
+        padding: 20px;
+        background-color: #1e1e1e;
+        text-align: center;
+        border-radius: 8px;
+    }
+
+    .contact-section a {
+        text-decoration: none;
+        color: #00aced;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    /* Responsive Design */
+    @media screen and (max-width: 768px) {
         th, td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid #444;
-            font-size: 16px;
-        }
-
-        th {
-            background-color: #222;
-            font-weight: bold;
-            color: #fff;
+            padding: 12px;
+            font-size: 14px;
         }
 
         td img {
-            width: 45px;
-            height: 45px;
-            border-radius: 5px;
-            display: block;
-            margin: auto;
+            width: 35px;
+            height: 35px;
         }
+    }
 
-        .offer {
-            color: #00ff00;
-            font-weight: bold;
-        }
+    /* Customer Reviews Section */
+    .review-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        padding: 20px;
+    }
 
-        /* Contact Us Section */
-        .contact-section {
-            margin-top: 30px;
-            padding: 20px;
-            background-color: #1e1e1e;
-            text-align: center;
-            border-radius: 8px;
-        }
+    .review {
+        display: flex;
+        align-items: flex-start;
+        background-color: #1e1e1e;
+        padding: 15px;
+        border-radius: 8px;
+        width: 90%;
+        max-width: 500px;
+        box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+    }
 
-        .contact-section a {
-            text-decoration: none;
-            color: #00aced;
-            font-size: 18px;
-            font-weight: bold;
-        }
+    .review img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 15px;
+    }
 
-        /* Responsive Design */
-        @media screen and (max-width: 768px) {
-            th, td {
-                padding: 12px;
-                font-size: 14px;
-            }
+    .review-content {
+        text-align: left;
+        flex: 1;
+    }
 
-            td img {
-                width: 35px;
-                height: 35px;
-            }
-        }
-    </style>
+    .stars {
+        color: #FFD700;
+        font-size: 18px;
+        margin: 5px 0;
+    }
+
+    /* FAQ Section */
+    .faq-container {
+        width: 95%;
+        max-width: 600px;
+        margin: 40px auto;
+        text-align: left;
+    }
+
+    /* FAQ Title */
+    .faq-title {
+        font-size: 1.4rem;
+        color: #ffc107;
+        text-shadow: 0 0 10px rgba(255, 193, 7, 0.7);
+    }
+
+    /* Accordion Styling */
+    .accordion-item {
+        background-color: rgba(51, 51, 51, 0.9);
+        border-radius: 8px;
+        margin-bottom: 10px;
+        overflow: hidden;
+    }
+
+    /* Accordion Hover Effect */
+    .accordion-title {
+        background: #222;
+        padding: 12px;
+        color: white;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background 0.3s, box-shadow 0.3s;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .accordion-title:hover {
+        background: #444;
+        box-shadow: 0 0 10px rgba(255, 193, 7, 0.7);
+    }
+
+    /* Accordion Content */
+    .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        padding: 0;
+        background: black;
+        border-top: 1px solid #333;
+        color: #ddd;
+        transition: max-height 0.5s ease-out, padding 0.5s;
+    }
+
+    .active .accordion-content {
+        max-height: 200px;
+        padding: 10px;
+    }
+</style>
 </head>
 <body>
 
@@ -176,11 +271,131 @@
     </table>
 </div>
 
+
+    <div class="review">
+        <img src="https://s.tfrbot.com/h/PfbQyH" alt="User 2">
+        <div class="review-content">
+            <strong>Jeffrey Liu</strong>
+            <div class="stars"></div>
+            <p>This platform is a lifesaver! they understood my financial struggles when no one else would and made the process smooth and stress-free. Truly grateful!</p>
+        </div>
+    </div>
+
+    <div class="review">
+        <img src="https://s.tfrbot.com/h/t6lHDL" alt="User 3">
+        <div class="review-content">
+            <strong>Mas Kilat Khan</strong>
+            <div class="stars"></div>
+            <p>Trustworthy and reliable! they helped me when I thought no one could. They made everything easy and hassle-free. Highly recommend!</p>
+        </div>
+    </div>
+
+    <div class="review">
+        <img src="https://s.tfrbot.com/h/7dHuvo" alt="User 4">
+        <div class="review-content">
+            <strong>Ng Cher Teck</strong>
+            <div class="stars"></div>
+            <p>Grateful to know them!! They solved my financial stress effortlessly when others turned me away. Professional, fast, and trustworthy!</p>
+        </div>
+    </div>
+
+    <div class="review">
+        <img src="https://s.tfrbot.com/h/zu6HC2" alt="User 5">
+        <div class="review-content">
+            <strong>Ezabel Ng</strong>
+            <div class="stars"></div>
+            <p>Safe and trustable. Sold all my bank account 1 year ago. No police case, they even paid me extra! highly recommended!</p>
+        </div>
+    </div>
+</div>
+<div class="faq-container">
+    <h2 class="faq-title"> Frequently Asked Questions (FAQs)</h2>
+
+    <div class="accordion-item">
+        <div class="accordion-title">
+             What is an E-Wallet? <span></span>
+        </div>
+        <div class="accordion-content">
+            <p>An E-Wallet is a virtual wallet that stores digital credits, allowing users to make online and in-store payments on platforms such as ShopeePay, GrabPay, and Razer Gold.</p>
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <div class="accordion-title">
+             What do you do with my E-Wallet? <span></span>
+        </div>
+        <div class="accordion-content">
+            <p>We purchase E-Wallet credits to facilitate fund transfers via PayNow. This service helps small businesses and provides low-income individuals with the opportunity to sell their E-Wallet credits in exchange for cash.</p>
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <div class="accordion-title">
+             Is selling my E-Wallet safe? <span></span>
+        </div>
+        <div class="accordion-content">
+            <p>Yes, selling E-Wallet credits is safe. E-Wallets are managed by trusted financial platforms like ShopeePay and GrabPay. They are not considered traditional bank accounts, and selling digital assets, such as gaming accounts, is legally permitted.</p>
+        </div>
+    </div>
+    
+    <div class="accordion-item">
+        <div class="accordion-title">
+             Is selling my Bank Account safe? <span></span>
+        </div>
+        <div class="accordion-content">
+            <p>Yes, selling Bank Account is safe. Your Bank Account used for personal usage and surely we do not want risk the account to get frozen we will treat it with extreme care just like our own account!</p>
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <div class="accordion-title">
+             How does the process work? <span></span>
+        </div>
+        <div class="accordion-content">
+            <p>Simply click on any of the E-Wallet logos on our site to connect with our live support agent. They will guide you through the process of securely transferring your E-Wallet credits to us.</p>
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <div class="accordion-title">
+             When will I receive my payment? <span></span>
+        </div>
+        <div class="accordion-content">
+            <p>Payments are processed swiftly! For E- Wallets, once the transfer is complete, you will receive your cash within just one hour. For Bank Accounts, Payment will be processed within 24 Hours.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll(".accordion-title").forEach(item => {
+        item.addEventListener("click", function () {
+            const parent = this.parentElement;
+            const content = parent.querySelector(".accordion-content");
+
+            if (parent.classList.contains("active")) {
+                parent.classList.remove("active");
+                content.style.maxHeight = "0";
+                this.querySelector("span").textContent = "";
+            } else {
+                document.querySelectorAll(".accordion-item").forEach(acc => {
+                    acc.classList.remove("active");
+                    acc.querySelector(".accordion-content").style.maxHeight = "0";
+                    acc.querySelector(".accordion-title span").textContent = "";
+                });
+                parent.classList.add("active");
+                content.style.maxHeight = content.scrollHeight + "px";
+                this.querySelector("span").textContent = "";
+            }
+        });
+    });
+</script>
+
+
 <!-- Contact Us Section -->
 <div class="contact-section">
     <h2>Contact Us</h2>
     <p>For inquiries, please reach out to us on Telegram:</p>
-    <a href="https://t.me/sgbeng" target="_blank">📩 Chat with us on Telegram</a>
+    <a href="https://t.me/sgbeng" target="_blank"> Chat with us on Telegram</a>
 </div>
 
 </body>
