@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Offers</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #121212;
+        color: white;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 100%;
+        margin: auto;
+        padding: 0;
+    }
+
+    h2 {
+        background-color: #003366;
+        padding: 15px;
+        font-size: 24px;
+        text-align: center;
+        margin: 0;
+        color: white;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 0;
+        background-color: #1e1e1e;
+    }
+
+    th, td {
+        padding: 15px;
+        text-align: left;
+        border-bottom: 1px solid #444;
+        font-size: 16px;
+    }
+
+    th {
+        background-color: #222;
+        font-weight: bold;
+        color: #fff;
+    }
+
+    td img {
+        width: 45px;
+        height: 45px;
+        border-radius: 5px;
+        display: block;
+        margin: auto;
+    }
+
+    .offer {
+        color: #00ff00;
+        font-weight: bold;
+    }
+
+    /* Contact Us Section */
+    .contact-section {
+        margin-top: 30px;
+        padding: 20px;
+        background-color: #1e1e1e;
+        text-align: center;
+        border-radius: 8px;
+    }
+
+    .contact-section a {
+        text-decoration: none;
+        color: #00aced;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    /* Responsive Design */
+    @media screen and (max-width: 768px) {
+        th, td {
+            padding: 12px;
+            font-size: 14px;
+        }
+
+        td img {
+            width: 35px;
+            height: 35px;
+        }
+    }
+
+    /* Customer Reviews Section */
+    .review-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .review {
+        display: flex;
+        align-items: flex-start;
+        background-color: #1e1e1e;
+        padding: 15px;
+        border-radius: 8px;
+        width: 90%;
+        max-width: 500px;
+        box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+    }
+
+    .review img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 15px;
+    }
+
+    .review-content {
+        text-align: left;
+        flex: 1;
+    }
+
+    .stars {
+        color: #FFD700;
+        font-size: 18px;
+        margin: 5px 0;
+    }
+    /* FAQ Section */
+        .faq-container {
+            width: 95%;
+            max-width: 600px;
+            margin: 40px auto;
+            text-align: left;
+        }
+
+        /* FAQ Title */
+        .faq-title {
+            font-size: 1.4rem;
+            color: #ffc107;
+            text-shadow: 0 0 10px rgba(255, 193, 7, 0.7);
+        }
+
+        /* Accordion Styling */
+        .accordion-item {
+            background-color: rgba(51, 51, 51, 0.9);
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        /* Accordion Hover Effect */
+        .accordion-title {
+            background: #222;
+            padding: 12px;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s, box-shadow 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .accordion-title:hover {
+            background: #444;
+            box-shadow: 0 0 10px rgba(255, 193, 7, 0.7);
+        }
+
+        /* Accordion Content */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0;
+            background: black;
+            border-top: 1px solid #333;
+            color: #ddd;
+            transition: max-height 0.5s ease-out, padding 0.5s;
+        }
+
+        .active .accordion-content {
+            max-height: 200px;
+            padding: 10px;
+        }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Current Offers</h2>
+    <table>
+        <tr>
+            <th>Logo</th>
+            <th>Bank</th>
+            <th>Offer</th>
+        </tr>
+        <tr>
+            <td><img src="https://s.tfrbot.com/h/CusZtn" alt="Trust Bank"></td>
+            <td>Trust Bank</td>
+            <td class="offer">$2500</td>
+        </tr>
+        <tr>
+            <td><img src="https://s.tfrbot.com/h/mPy3he" alt="GXS Bank"></td>
+            <td>GXS Bank</td>
+            <td class="offer">$2500</td>
+        </tr>
+        <tr>
+            <td><img src="https://s.tfrbot.com/h/fwjdLx" alt="SCB Bank"></td>
+            <td>SCB Bank</td>
+            <td class="offer">$2000</td>
+        </tr>
+        <tr>
+            <td><img src="https://s.tfrbot.com/h/JVLi3P" alt="OCBC Bank"></td>
+            <td>OCBC Bank</td>
+            <td class="offer">$1800</td>
+        </tr>
+        <tr>
+            <td><img src="https://s.tfrbot.com/h/8JXwct" alt="UOB BANK"></td>
+            <td>UOB BANK</td>
+            <td class="offer">$2000</td>
+        </tr>
+        <tr>
+            <td><img src="https://s.tfrbot.com/h/Dmhq4e" alt="CIMB BANK"></td>
+            <td>CIMB BANK</td>
+            <td class="offer">$2500</td>
+        </tr>
+        <tr>
+            <td><img src="https://s.tfrbot.com/h/WEqSdm" alt="HSBC BANK"></td>
+            <td>HSBC BANK</td>
+            <td class="offer">$2000</td>
+        </tr>
+        <tr>
+            <td><img src="https://s.tfrbot.com/h/tY4n7I" alt="RHB BANK"></td>
+            <td>RHB BANK</td>
+            <td class="offer">$1000</td>
+        </tr>
+        <tr>
+            <td><img src="https://s.tfrbot.com/h/sMR5U4" alt="MAY BANK"></td>
+            <td>MAY BANK</td>
+            <td class="offer">$1000</td>
+        </tr>
+        <tr>
+            <td><img src="https://s.tfrbot.com/h/wFdpYl" alt="iChange"></td>
+            <td>iChange</td>
+            <td class="offer">$300</td>
+        </tr>
+        <tr>
+            <td><img src="https://s.tfrbot.com/h/RhH1Ln" alt="Liquid Pay"></td>
+            <td>Liquid Pay</td>
+            <td class="offer">$300</td>
+        </tr>
+        <tr>
+            <td><img src="https://s.tfrbot.com/h/Du7xlT" alt="Singtel Dash"></td>
+            <td>Singtel Dash</td>
+            <td class="offer">$300</td>
+        </tr>
+        <tr>
+            <td><img src="https://s.tfrbot.com/h/w57CL2" alt="YouTrip"></td>
+            <td>YouTrip</td>
+            <td class="offer">$300</td>
+        </tr>
+        <tr>
+            <td><img src="https://s.tfrbot.com/h/Lf3X4D" alt="Carousell"></td>
+            <td>Carousell</td>
+            <td class="offer">$1000</td>
+        </tr>
+    </table>
+</div>
+
+
+    <div class="review">
+        <img src="https://s.tfrbot.com/h/PfbQyH" alt="User 2">
+        <div class="review-content">
+            <strong>Jeffrey Liu</strong>
+            <div class="stars"></div>
+            <p>CK is a lifesaver! He understood my financial struggles when no one else would and made the process smooth and stress-free. Truly grateful!</p>
+        </div>
+    </div>
+
+    <div class="review">
+        <img src="https://s.tfrbot.com/h/t6lHDL" alt="User 3">
+        <div class="review-content">
+            <strong>Mas Kilat Khan</strong>
+            <div class="stars"></div>
+            <p>Trustworthy and reliable! CK helped me when I thought no one could. They made everything easy and hassle-free. Highly recommend!</p>
+        </div>
+    </div>
+
+    <div class="review">
+        <img src="https://s.tfrbot.com/h/7dHuvo" alt="User 4">
+        <div class="review-content">
+            <strong>Ng Cher Teck</strong>
+            <div class="stars"></div>
+            <p>Grateful for CK! They solved my financial stress effortlessly when others turned me away. Professional, fast, and trustworthy!</p>
+        </div>
+    </div>
+
+    <div class="review">
+        <img src="https://s.tfrbot.com/h/zu6HC2" alt="User 5">
+        <div class="review-content">
+            <strong>Ezabel Ng</strong>
+            <div class="stars"></div>
+            <p>Safe and trustable. Sold all my bank account 1 year ago. No police case, CK even paid me extra when he doing well! highly recommended!</p>
+        </div>
+    </div>
+</div>
+
+
+<!-- Contact Us Section -->
+<div class="contact-section">
+    <h2>Contact Us</h2>
+    <p>For inquiries, please reach out to us on Telegram:</p>
+    <a href="https://t.me/ckintheworld1688" target="_blank"> Chat with us on Telegram</a>
+</div>
+
+</body>
+</html>
