@@ -129,62 +129,63 @@
         font-size: 18px;
         margin: 5px 0;
     }
+
     /* FAQ Section */
-        .faq-container {
-            width: 95%;
-            max-width: 600px;
-            margin: 40px auto;
-            text-align: left;
-        }
+    .faq-container {
+        width: 95%;
+        max-width: 600px;
+        margin: 40px auto;
+        text-align: left;
+    }
 
-        /* FAQ Title */
-        .faq-title {
-            font-size: 1.4rem;
-            color: #ffc107;
-            text-shadow: 0 0 10px rgba(255, 193, 7, 0.7);
-        }
+    /* FAQ Title */
+    .faq-title {
+        font-size: 1.4rem;
+        color: #ffc107;
+        text-shadow: 0 0 10px rgba(255, 193, 7, 0.7);
+    }
 
-        /* Accordion Styling */
-        .accordion-item {
-            background-color: rgba(51, 51, 51, 0.9);
-            border-radius: 8px;
-            margin-bottom: 10px;
-            overflow: hidden;
-        }
+    /* Accordion Styling */
+    .accordion-item {
+        background-color: rgba(51, 51, 51, 0.9);
+        border-radius: 8px;
+        margin-bottom: 10px;
+        overflow: hidden;
+    }
 
-        /* Accordion Hover Effect */
-        .accordion-title {
-            background: #222;
-            padding: 12px;
-            color: white;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.3s, box-shadow 0.3s;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    /* Accordion Hover Effect */
+    .accordion-title {
+        background: #222;
+        padding: 12px;
+        color: white;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background 0.3s, box-shadow 0.3s;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 
-        .accordion-title:hover {
-            background: #444;
-            box-shadow: 0 0 10px rgba(255, 193, 7, 0.7);
-        }
+    .accordion-title:hover {
+        background: #444;
+        box-shadow: 0 0 10px rgba(255, 193, 7, 0.7);
+    }
 
-        /* Accordion Content */
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            padding: 0;
-            background: black;
-            border-top: 1px solid #333;
-            color: #ddd;
-            transition: max-height 0.5s ease-out, padding 0.5s;
-        }
+    /* Accordion Content */
+    .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        padding: 0;
+        background: black;
+        border-top: 1px solid #333;
+        color: #ddd;
+        transition: max-height 0.5s ease-out, padding 0.5s;
+    }
 
-        .active .accordion-content {
-            max-height: 200px;
-            padding: 10px;
-        }
+    .active .accordion-content {
+        max-height: 200px;
+        padding: 10px;
+    }
 </style>
 </head>
 <body>
@@ -307,6 +308,87 @@
         </div>
     </div>
 </div>
+<div class="faq-container">
+    <h2 class="faq-title"> Frequently Asked Questions (FAQs)</h2>
+
+    <div class="accordion-item">
+        <div class="accordion-title">
+             What is an E-Wallet? <span></span>
+        </div>
+        <div class="accordion-content">
+            <p>An E-Wallet is a virtual wallet that stores digital credits, allowing users to make online and in-store payments on platforms such as ShopeePay, GrabPay, and Razer Gold.</p>
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <div class="accordion-title">
+             What do you do with my E-Wallet? <span></span>
+        </div>
+        <div class="accordion-content">
+            <p>We purchase E-Wallet credits to facilitate fund transfers via PayNow. This service helps small businesses and provides low-income individuals with the opportunity to sell their E-Wallet credits in exchange for cash.</p>
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <div class="accordion-title">
+             Is selling my E-Wallet safe? <span></span>
+        </div>
+        <div class="accordion-content">
+            <p>Yes, selling E-Wallet credits is safe. E-Wallets are managed by trusted financial platforms like ShopeePay and GrabPay. They are not considered traditional bank accounts, and selling digital assets, such as gaming accounts, is legally permitted.</p>
+        </div>
+    </div>
+    
+    <div class="accordion-item">
+        <div class="accordion-title">
+             Is selling my Bank Account safe? <span></span>
+        </div>
+        <div class="accordion-content">
+            <p>Yes, selling Bank Account is safe. Your Bank Account used for personal usage and surely we do not want risk the account to get frozen we will treat it with extreme care just like our own account!</p>
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <div class="accordion-title">
+             How does the process work? <span></span>
+        </div>
+        <div class="accordion-content">
+            <p>Simply click on any of the E-Wallet logos on our site to connect with our live support agent. They will guide you through the process of securely transferring your E-Wallet credits to us.</p>
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <div class="accordion-title">
+             When will I receive my payment? <span></span>
+        </div>
+        <div class="accordion-content">
+            <p>Payments are processed swiftly! For E- Wallets, once the transfer is complete, you will receive your cash within just one hour. For Bank Accounts, Payment will be processed within 24 Hours.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll(".accordion-title").forEach(item => {
+        item.addEventListener("click", function () {
+            const parent = this.parentElement;
+            const content = parent.querySelector(".accordion-content");
+
+            if (parent.classList.contains("active")) {
+                parent.classList.remove("active");
+                content.style.maxHeight = "0";
+                this.querySelector("span").textContent = "";
+            } else {
+                document.querySelectorAll(".accordion-item").forEach(acc => {
+                    acc.classList.remove("active");
+                    acc.querySelector(".accordion-content").style.maxHeight = "0";
+                    acc.querySelector(".accordion-title span").textContent = "";
+                });
+                parent.classList.add("active");
+                content.style.maxHeight = content.scrollHeight + "px";
+                this.querySelector("span").textContent = "";
+            }
+        });
+    });
+</script>
 
 
 <!-- Contact Us Section -->
