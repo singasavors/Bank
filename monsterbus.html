@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Underground Monster Bus - Profit Event</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+            text-align: center;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h2 {
+            background-color: #003366;
+            padding: 15px;
+            font-size: 24px;
+            color: white;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .event-details, .profit-calculator, .faq-container {
+            padding: 20px;
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid #444;
+        }
+
+        th {
+            background-color: #222;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        td img {
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+        }
+
+        .offer {
+            color: #00ff00;
+            font-weight: bold;
+        }
+
+        .profit-calculator {
+            padding: 20px;
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center; /* Center align everything inside */
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Align items in the center */
+        }
+
+        .profit-calculator h2 {
+            margin-bottom: 15px;
+            font-size: 22px;
+            color: #fff;
+        }
+
+        .profit-calculator input {
+            width: 100%;
+            max-width: 300px;
+            padding: 12px;
+            border-radius: 5px;
+            border: 1px solid #444;
+            background-color: #2a2a2a;
+            color: white;
+            text-align: center;
+        }
+
+        .profit-calculator button {
+            width: 100%;
+            max-width: 300px;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: none;
+            background-color: #00aced;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .profit-calculator button:hover {
+            background-color: #0077b5;
+        }
+
+        .result {
+            font-size: 18px;
+            font-weight: bold;
+            color: #ffc107;
+            margin-top: 15px;
+        }
+
+        .review-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .review {
+            display: flex;
+            align-items: flex-start;
+            background-color: #1e1e1e;
+            padding: 15px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+        }
+
+        .review img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .stars {
+            color: #FFD700;
+            font-size: 18px;
+        }
+
+        /* Accordion Fix */
+        .accordion-item {
+            background-color: #333;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        .accordion-title {
+            background: #222;
+            padding: 15px;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .accordion-title:hover {
+            background: #444;
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            background: black;
+            border-top: 1px solid #333;
+            color: #ddd;
+            padding: 0 15px;
+            opacity: 0;
+            transition: max-height 0.5s ease-out, opacity 0.5s ease-out, padding 0.5s;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+            padding: 15px;
+            opacity: 1;
+        }
+
+        /* Responsive adjustments */
+        @media screen and (max-width: 768px) {
+            th, td {
+                padding: 12px;
+                font-size: 14px;
+            }
+
+            h2 {
+                font-size: 20px;
+                padding: 12px;
+            }
+
+            .review {
+                width: 95%;
+            }
+
+            .profit-calculator input,
+            .profit-calculator button {
+                max-width: 90%; /* Ensure it scales on smaller screens */
+            }
+        }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Underground Monster Bus</h2>
+
+    <div class="event-details">
+        <h3>Event Details:</h3>
+        <p>The Council of Underground is organizing the Monster Bus Profit Farming Initiative...</p>
+        <ul>
+            <li> Max 5 Members Per Bus</li>
+            <li> Members must contribute resources</li>
+            <li> Profit-sharing: 50% to the idea creator, 50% among contributors</li>
+        </ul>
+    </div>
+
+    <h2>Resource Profits %</h2>
+    <table>
+        <tr>
+            <th>Logo</th>
+            <th>Bank</th>
+            <th>Profits</th>
+        </tr>
+        <tr>
+            <td><img src="https://s.tfrbot.com/h/CusZtn" alt="Trust Bank"></td>
+            <td>Trust Bank</td>
+            <td class="offer">50%</td>
+        </tr>
+        <tr>
+            <td><img src="https://s.tfrbot.com/h/mPy3he" alt="GXS Bank"></td>
+            <td>GXS Bank</td>
+            <td class="offer">50%</td>
+        </tr>
+        <tr>
+            <td><img src="https://s.tfrbot.com/h/fwjdLx" alt="SCB Bank"></td>
+            <td>SCB Bank</td>
+            <td class="offer">50%</td>
+        </tr>
+        <tr>
+            <td><img src="https://s.tfrbot.com/h/JVLi3P" alt="OCBC Bank"></td>
+            <td>OCBC Bank</td>
+            <td class="offer">50%</td>
+        </tr>
+        <tr>
+            <td><img src="https://s.tfrbot.com/h/8JXwct" alt="UOB BANK"></td>
+            <td>UOB BANK</td>
+            <td class="offer">50%</td>
+        </tr>
+        <tr>
+            <td><img src="https://s.tfrbot.com/h/Dmhq4e" alt="CIMB BANK"></td>
+            <td>CIMB BANK</td>
+            <td class="offer">50%</td>
+        </tr>
+        <tr>
+            <td><img src="https://s.tfrbot.com/h/WEqSdm" alt="HSBC BANK"></td>
+            <td>HSBC BANK</td>
+            <td class="offer">50%</td>
+        </tr>
+        <tr>
+            <td><img src="https://s.tfrbot.com/h/tY4n7I" alt="RHB BANK"></td>
+            <td>RHB BANK</td>
+            <td class="offer">30%</td>
+        </tr>
+        <tr>
+            <td><img src="https://s.tfrbot.com/h/sMR5U4" alt="MAY BANK"></td>
+            <td>MAY BANK</td>
+            <td class="offer">30%</td>
+        </tr>
+        <tr>
+            <td><img src="https://s.tfrbot.com/h/wFdpYl" alt="iChange"></td>
+            <td>iChange</td>
+            <td class="offer">20%</td>
+        </tr>
+        <tr>
+            <td><img src="https://s.tfrbot.com/h/RhH1Ln" alt="Liquid Pay"></td>
+            <td>Liquid Pay</td>
+            <td class="offer">20%</td>
+        </tr>
+        <tr>
+            <td><img src="https://s.tfrbot.com/h/Du7xlT" alt="Singtel Dash"></td>
+            <td>Singtel Dash</td>
+            <td class="offer">20%</td>
+        </tr>
+        <tr>
+            <td><img src="https://s.tfrbot.com/h/w57CL2" alt="YouTrip"></td>
+            <td>YouTrip</td>
+            <td class="offer">20%</td>
+        </tr>
+        <tr>
+            <td><img src="https://s.tfrbot.com/h/Lf3X4D" alt="Carousell"></td>
+            <td>Carousell</td>
+            <td class="offer">50%</td>
+        </tr>
+    </table>
+</div>
+
+    <div class="profit-calculator">
+        <h3>📊 Profit Calculator</h3>
+        <input type="number" id="earnings" placeholder="Enter Earnings (SGD)">
+        <button onclick="calculateProfit()">Calculate</button>
+        <p class="result" id="profit-result"></p>
+    </div>
+
+    <div class="review-container">
+        <div class="review">
+        <img src="https://s.tfrbot.com/h/PfbQyH" alt="User 2">
+        <div class="review-content">
+            <strong>Jeffrey Liu</strong>
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p>Joining the Monster Bus has changed the way I earn money! Resources are scarce and difficult to access alone, but with this system, members share everything fairly. This allows us to maximize our profits while minimizing risks.</p>
+        </div>
+    </div>
+
+    <div class="review">
+        <img src="https://s.tfrbot.com/h/t6lHDL" alt="User 3">
+        <div class="review-content">
+            <strong>Mas Kilat Khan</strong>
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p>The Monster Bus is a game-changer! Before this, I struggled to find the right platforms and accounts to generate revenue. Now, with shared access to valuable resources, I can scale my income faster and more efficiently.</p>
+        </div>
+    </div>
+
+    <div class="review">
+        <img src="https://s.tfrbot.com/h/7dHuvo" alt="User 4">
+        <div class="review-content">
+            <strong>Ng Cher Teck</strong>
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p>Resource-sharing through Monster Bus has been a lifesaver! No more wasting time hunting for exclusive access. Now, all members benefit equally, making it much easier to generate consistent profits.</p>
+        </div>
+    </div>
+
+    <div class="review">
+        <img src="https://s.tfrbot.com/h/zu6HC2" alt="User 5">
+        <div class="review-content">
+            <strong>Ezabel Ng</strong>
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p>With the Monster Bus, I’ve been able to access high-value accounts I couldn’t afford alone. The fair profit-sharing system ensures that every member benefits, and I’ve seen my earnings increase significantly. Highly recommended!</p>
+        </div>
+    </div>
+    
+    <div class="container">
+    <h2>Monster Bus Hunting - Frequently Asked Questions</h2>
+
+    <div class="faq-container">
+        <div class="accordion-item">
+            <div class="accordion-title" onclick="toggleAccordion(this)">🔍 What is Monster Bus Hunting? <span>+</span></div>
+            <div class="accordion-content">
+                <p>Monster Bus Hunting means profit hunting, where members go out to hunt for profits using shared resources. At the end of the day, profits are distributed fairly:</p>
+                <ul>
+                    <li>🟢 Members who successfully hunt a profit receive 50% of the overall earnings.</li>
+                    <li>🔄 The remaining 50% is shared evenly among the 5 contributing members.</li>
+                </ul>
+                <p>This ensures that all resources and efforts are fully utilized for maximum profit.</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-title" onclick="toggleAccordion(this)">💼 What resources can I contribute? <span>+</span></div>
+            <div class="accordion-content">
+                <p>You can contribute valuable financial resources that can be used by the team, such as:</p>
+                <ul>
+                    <li>🏦 Bank Accounts – Used for secure and verified transactions.</li>
+                    <li>💳 E-Wallets – Access to platforms like PayNow, GrabPay, or other digital wallets.</li>
+                    <li>🛒 Carousell Accounts – High-value verified accounts for selling, trading, or marketplace transactions.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-title" onclick="toggleAccordion(this)">⚠️ Is there a requirement to join? <span>+</span></div>
+            <div class="accordion-content">
+                <p>Yes! Only contributing members can join the Monster Bus. You can contribute in two ways:</p>
+                <ul>
+                    <li>✅ Provide a resource (Bank Accounts, E-Wallets, Carousell Accounts).</li>
+                    <li>💡 Share fresh, useful ideas that can generate new income streams.</li>
+                </ul>
+                <p>Members who do not contribute any resources or ideas will not be allowed to join the Monster Bus.</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-title" onclick="toggleAccordion(this)">📩 How to join? <span>+</span></div>
+            <div class="accordion-content">
+                <p>To join the Monster Bus, please contact <strong>@sgbeng</strong> on Telegram and show your interest.</p>
+                <p>Once verified, you will receive further instructions on how to contribute and get started.</p>
+                <p>🚀 Only serious members who are ready to contribute will be accepted!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function calculateProfit() {
+    let earnings = parseFloat(document.getElementById("earnings").value);
+    if (isNaN(earnings) || earnings <= 0) {
+        document.getElementById("profit-result").innerText = "Please enter a valid earning amount.";
+        return;
+    }
+    let mainIdeaProfit = earnings * 0.50;
+    let sharedProfit = (earnings * 0.50) / 5;
+    document.getElementById("profit-result").innerText = 
+        `Main Contributor: SGD ${mainIdeaProfit.toFixed(2)}\nEach Member: SGD ${sharedProfit.toFixed(2)}`;
+}
+
+function toggleAccordion(element) {
+    let parent = element.parentElement;
+    let content = parent.querySelector(".accordion-content");
+
+    if (parent.classList.contains("active")) {
+        parent.classList.remove("active");
+        content.style.maxHeight = "0";
+    } else {
+        document.querySelectorAll(".accordion-item").forEach(item => {
+            item.classList.remove("active");
+            item.querySelector(".accordion-content").style.maxHeight = "0";
+        });
+        parent.classList.add("active");
+        content.style.maxHeight = content.scrollHeight + "px";
+    }
+}
+</script>
+
+</body>
+</html>
