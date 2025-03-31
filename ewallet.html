@@ -1,355 +1,346 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Wallet Price List</title>
-    <style>
-        /* Global Styles */
-        body {
-            background: black;
-            color: white;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* Centering Wallet Container */
-        .wallet-container {
-            width: 100%;
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        /* Title Styling */
-        .wallet-title {
-            font-size: 1.8rem;
-            color: #ff0;
-            text-shadow: 0 0 15px yellow;
-            margin-bottom: 20px;
-        }
-
-        /* Wallet Cards Alignment */
-        .price-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            gap: 15px;
-            width: 100%;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        /* Styling Wallet Items */
-        .item {
-            width: 95%;
-            max-width: 350px;
-            background: rgba(20, 20, 20, 0.9);
-            border-radius: 12px;
-            padding: 15px;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-            overflow: hidden;
-            position: relative;
-            border: 2px solid transparent;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        /* Neon Glow Animation */
-        @keyframes neonGlow {
-            0% { box-shadow: 0 0 10px cyan; border-color: cyan; }
-            50% { box-shadow: 0 0 20px cyan, 0 0 30px cyan; border-color: cyan; }
-            100% { box-shadow: 0 0 10px cyan; border-color: cyan; }
-        }
-
-        .item:hover {
-            transform: scale(1.05);
-            animation: neonGlow 1s infinite alternate;
-        }
-
-        /* Centering Images */
-        .item img {
-            display: block;
-            margin: auto;
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            border: 2px solid white;
-            transition: transform 0.3s, filter 0.3s;
-        }
-
-        .item img:hover {
-            transform: scale(1.2);
-            filter: drop-shadow(0 0 20px cyan);
-        }
-
-        /* Text Styles */
-        .item h2 {
-            color: #00fff0;
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
-        }
-
-        .price {
-            color: #ff00ff;
-            font-weight: bold;
-        }
-
-        /* FAQ Section */
-        .faq-container {
-            width: 95%;
-            max-width: 600px;
-            margin: 40px auto;
-            text-align: left;
-        }
-
-        /* FAQ Title */
-        .faq-title {
-            font-size: 1.4rem;
-            color: #ffc107;
-            text-shadow: 0 0 10px rgba(255, 193, 7, 0.7);
-        }
-
-        /* Accordion Styling */
-        .accordion-item {
-            background-color: rgba(51, 51, 51, 0.9);
-            border-radius: 8px;
-            margin-bottom: 10px;
-            overflow: hidden;
-        }
-
-        /* Accordion Hover Effect */
-        .accordion-title {
-            background: #222;
-            padding: 12px;
-            color: white;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.3s, box-shadow 0.3s;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .accordion-title:hover {
-            background: #444;
-            box-shadow: 0 0 10px rgba(255, 193, 7, 0.7);
-        }
-
-        /* Accordion Content */
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            padding: 0;
-            background: black;
-            border-top: 1px solid #333;
-            color: #ddd;
-            transition: max-height 0.5s ease-out, padding 0.5s;
-        }
-
-        .active .accordion-content {
-            max-height: 200px;
-            padding: 10px;
-        }
-
-        /* 🔹 Fully Responsive Design */
-        @media (max-width: 1024px) { /* Tablet */
-            .wallet-title {
-                font-size: 1.6rem;
-            }
-            .price-list {
-                gap: 10px;
-            }
-            .item {
-                width: 90%;
-                max-width: 320px;
-            }
-        }
-
-        @media (max-width: 768px) { /* Mobile */
-            .wallet-container {
-                padding: 15px;
-            }
-            .wallet-title {
-                font-size: 1.5rem;
-            }
-            .price-list {
-                flex-direction: column;
-            }
-            .item {
-                width: 95%;
-                max-width: 100%;
-            }
-            .faq-container {
-                width: 95%;
-            }
-        }
-
-        @media (max-width: 480px) { /* Small Mobile */
-            .wallet-title {
-                font-size: 1.3rem;
-            }
-            .item {
-                padding: 10px;
-            }
-        }
-    </style>
-</head>
-<body>
-
-<div class="wallet-container">
-    <h2 class="wallet-title">🔥 Sell Your E-Wallets for Instant Cash! 🔥</h2>
-
-    <div class="price-list">
-        <div class="item" onclick="redirectTo('https://t.me/dmsgbeng')" aria-label="Boost Details" role="button" tabindex="0">
-            <img src="https://s.tfrbot.com/h/AKObnr" alt="Boost Logo" onerror="this.onerror=null; this.src='fallback-image.png';">
-            <div>
-                <h2>Boost</h2>
-                <p>Sell your <span class="price">$300 SGD</span> Boost account now! Quick & secure payout.</p>
-            </div>
-        </div>
-
-        <div class="item" onclick="redirectTo('https://t.me/dmsgbeng')" aria-label="BigPay Details" role="button" tabindex="0">
-            <img src="https://s.tfrbot.com/h/1SFxol" alt="BigPay Logo" onerror="this.onerror=null; this.src='fallback-image.png';">
-            <div>
-                <h2>BigPay</h2>
-                <p>Trade your <span class="price">$300 SGD</span> BigPay account today! Hassle-free transaction.</p>
-            </div>
-        </div>
-
-        <div class="item" onclick="redirectTo('https://t.me/dmsgbeng')" aria-label="Touch N Go Details" role="button" tabindex="0">
-            <img src="https://s.tfrbot.com/h/ZqPWld" alt="Touch N Go Logo" onerror="this.onerror=null; this.src='fallback-image.png';">
-            <div>
-                <h2>Touch N Go</h2>
-                <p>Get <span class="price">$500 SGD</span> fast for your Touch N Go account. Instant payout!</p>
-            </div>
-        </div>
-
-        <div class="item" onclick="redirectTo('https://t.me/dmsgbeng')" aria-label="LiquidPay Details" role="button" tabindex="0">
-            <img src="https://s.tfrbot.com/h/apwHfq" alt="LiquidPay Logo" onerror="this.onerror=null; this.src='fallback-image.png';">
-            <div>
-                <h2>LiquidPay</h2>
-                <p>Secure <span class="price">$200 SGD</span> in no time! Instant payout available.</p>
-            </div>
-        </div>
-
-        <div class="item" onclick="redirectTo('https://t.me/dmsgbeng')" aria-label="Singtel Dash Details" role="button" tabindex="0">
-            <img src="https://s.tfrbot.com/h/CpnD6M" alt="Singtel Dash Logo" onerror="this.onerror=null; this.src='fallback-image.png';">
-            <div>
-                <h2>Singtel Dash</h2>
-                <p>Sell your Singtel Dash account for <span class="price">$300 SGD</span>! One-hour payout.</p>
-            </div>
-        </div>
-
-        <div class="item" onclick="redirectTo('https://t.me/dmsgbeng')" aria-label="iChange Details" role="button" tabindex="0">
-            <img src="https://s.tfrbot.com/h/Ev6png" alt="iChange Logo" onerror="this.onerror=null; this.src='fallback-image.png';">
-            <div>
-                <h2>iChange</h2>
-                <p>Sell your iChange account for <span class="price">$300 SGD</span>! One-hour payout.</p>
-            </div>
-        </div>
-
-        <div class="item" onclick="redirectTo('https://t.me/dmsgbeng')" aria-label="YouTrip Details" role="button" tabindex="0">
-            <img src="https://s.tfrbot.com/h/prIveD" alt="YouTrip Logo" onerror="this.onerror=null; this.src='fallback-image.png';">
-            <div>
-                <h2>YouTrip</h2>
-                <p>Sell your aged YouTrip account for <span class="price">$300 SGD</span>! One-hour payout.</p>
-            </div>
-        </div>
-
-        <div class="item" onclick="redirectTo('https://t.me/dmsgbeng')" aria-label="Carousell Details" role="button" tabindex="0">
-            <img src="https://s.tfrbot.com/h/WPn3Ni" alt="Carousell Logo" onerror="this.onerror=null; this.src='fallback-image.png';">
-            <div>
-                <h2>Carousell</h2>
-                <p>Sell your aged Carousell account for <span class="price">$1000 SGD</span>! One-hour payout.</p>
-            </div>
-        </div>
-    </div> <!-- Correctly closed .price-list -->
-</div> <!-- Correctly closed .wallet-container -->
-
-    <!-- FAQ Section -->
-    <div class="faq-container">
-    <h2 class="faq-title">❓ Frequently Asked Questions (FAQs)</h2>
-
-    <div class="accordion-item">
-        <div class="accordion-title">
-            🔹 What is an E-Wallet? <span>➕</span>
-        </div>
-        <div class="accordion-content">
-            An E-Wallet is a virtual wallet that stores digital credits, allowing users to make online and in-store payments on platforms such as ShopeePay, GrabPay, and Razer Gold.
-        </div>
-    </div>
-
-    <div class="accordion-item">
-        <div class="accordion-title">
-            🔹 What do you do with my E-Wallet? <span>➕</span>
-        </div>
-        <div class="accordion-content">
-            We purchase E-Wallet credits to facilitate fund transfers via PayNow. This service helps small businesses and provides low-income individuals with the opportunity to sell their E-Wallet credits in exchange for cash.
-        </div>
-    </div>
-
-    <div class="accordion-item">
-        <div class="accordion-title">
-            🔹 Is selling my E-Wallet safe? <span>➕</span>
-        </div>
-        <div class="accordion-content">
-            Yes, selling E-Wallet credits is safe. E-Wallets are managed by trusted financial platforms like ShopeePay and GrabPay. They are not considered traditional bank accounts, and selling digital assets, such as gaming accounts, is legally permitted.
-        </div>
-    </div>
-
-    <div class="accordion-item">
-        <div class="accordion-title">
-            🔹 How does the process work? <span>➕</span>
-        </div>
-        <div class="accordion-content">
-            Simply click on any of the E-Wallet logos on our site to connect with our live support agent. They will guide you through the process of securely transferring your E-Wallet credits to us.
-        </div>
-    </div>
-
-    <div class="accordion-item">
-        <div class="accordion-title">
-            🔹 When will I receive my payment? <span>➕</span>
-        </div>
-        <div class="accordion-content">
-            Payments are processed swiftly! Once the transfer is complete, you will receive your cash within just one hour.
-        </div>
-    </div>
-</div>
-
-<!-- JavaScript for Redirection & Accordion -->
-<script>
-    function redirectTo(url) {
-        window.location.href = url;
-    }
-
-    document.querySelectorAll(".accordion-title").forEach(item => {
-        item.addEventListener("click", () => {
-            const parent = item.parentElement;
-            const content = item.nextElementSibling;
-
-            parent.classList.toggle("active");
-
-            const icon = item.querySelector("span");
-            icon.textContent = parent.classList.contains("active") ? "➖" : "➕";
-        });
-    });
-
-    // Keyboard Accessibility
-    document.querySelectorAll(".item").forEach(item => {
-        item.addEventListener("keydown", (e) => {
-            if (e.key === "Enter") {
-                item.click();
-            }
-        });
-    });
-</script>
-
-</body>
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta content="Sell your E-Wallets for instant cash – Boost, BigPay, YouTrip, and more. Fast, secure payouts by Council of Underground." name="description"/>
+<meta content="e-wallet, sell wallet, Boost, BigPay, YouTrip, fast payout, Council of Underground" name="keywords"/>
+<meta content="Council of Underground" name="author"/>
+<title>Sell Your E-Wallets for Instant Cash | Council of Underground</title>
+<meta content="#141e30" name="theme-color"/><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>E-Wallet Price List</title>
+<style>
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: radial-gradient(circle at top left, #000428, #004e92);
+  color: #f1f1f1;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.wallet-container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  border: 2px solid #00ffe5;
+  box-shadow: 0 0 15px #00ffe5;
+}
+
+.wallet-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #00ffe5;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 10px #00ffe5;
+}
+
+.price-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 0 1rem;
+}
+
+.item {
+  width: 100%;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 15px;
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid #00ffe5;
+  transition: all 0.4s ease-in-out;
+  box-shadow: 0 0 10px transparent;
+}
+
+.item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 20px #00ffe5;
+  background: rgba(0, 0, 50, 0.8);
+}
+
+.item img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 10px #00ffe5;
+}
+
+.price {
+  color: #39ff14;
+  font-weight: bold;
+  text-shadow: 0 0 5px #39ff14;
+}
+
+.faq-container {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 12px;
+  border: 1px solid #00ffe5;
+  box-shadow: 0 0 10px #00ffe5;
+}
+
+.faq-title {
+  text-align: center;
+  font-size: 2rem;
+  color: #00ffe5;
+  text-shadow: 0 0 10px #00ffe5;
+  margin-bottom: 1rem;
+}
+
+.accordion-item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 1rem 0;
+}
+
+.accordion-title {
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  text-shadow: 0 0 5px #fff;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  color: #ccc;
+}
+
+.accordion-item.active .accordion-content {
+  max-height: 300px;
+}
+</style>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet"/></head>
+<body>
+<header class="d-flex justify-content-between align-items-center p-3 border-bottom shadow-sm" style="background: rgba(20, 30, 48, 0.95); position: sticky; top: 0; z-index: 1040;">
+<div class="d-flex align-items-center">
+<img alt="Council of Underground Logo" src="https://s.tfrbot.com/h/NrQhUP" style="height: 50px; border-radius: 10px; margin-right: 15px;"/>
+<h1 class="fs-4 m-0" style="color: #00ffd5;">E Wallets</h1>
+</div>
+<button class="btn btn-outline-light" onclick="toggleMenu()">☰ Menu</button>
+</header>
+<nav class="text-center" id="nav-menu" style="display:none; background: rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.1);">
+<ul class="nav flex-column p-3">
+<li class="nav-item"><a class="nav-link text-light" href="https://s.tfrbot.com/l8FgdM">Home</a></li>
+<li class="nav-item"><a class="nav-link text-light" href="https://s.tfrbot.com/pJ42sj">Carousell</a></li>
+<li class="nav-item"><a class="nav-link text-light" href="https://s.tfrbot.com/K5rMjT">Account Offers</a></li>
+<li class="nav-item"><a class="nav-link text-light" href="https://s.tfrbot.com/ezoG5W">Aeroplane E SIM</a></li>
+<li class="nav-item"><a class="nav-link text-light" href="https://s.tfrbot.com/pQdDbS">Vape Store</a></li>
+<li class="nav-item"><a class="nav-link text-light" href="https://s.tfrbot.com/bGYdz6">Contact Us</a></li>
+</ul>
+</nav>
+<script>
+function toggleMenu() {
+    const nav = document.getElementById("nav-menu");
+    nav.style.display = nav.style.display === "block" ? "none" : "block";
+}
+</script>
+<div class="text-end p-3">
+</div>
+<script>
+function toggleDarkMode() {
+    document.body.classList.toggle("bg-dark");
+    document.body.classList.toggle("text-white");
+    document.querySelectorAll('.item').forEach(el => {
+        el.classList.toggle("bg-dark");
+        el.classList.toggle("text-white");
+    });
+}
+</script>
+<div class="wallet-container animate__animated animate__fadeInUp" style="width: 100%; margin: 0 auto; padding: 2rem; backdrop-filter: blur(8px); background: rgba(255, 255, 255, 0.05); border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.15);">
+<h2 class="wallet-title">🔥 Sell Your E-Wallets for Instant Cash! 🔥</h2>
+<div class="price-list">
+<div aria-label="Boost Details" class="item" onclick="redirectTo('https://singasavors.github.io/Councilofunderground/bankdetails.html')" role="button" tabindex="0">
+<img alt="Boost Logo" onerror="this.onerror=null; this.src='fallback-image.png';" src="https://s.tfrbot.com/h/AKObnr"/>
+<div>
+<h2>Boost</h2>
+<p>Sell your <span class="price">$300 SGD</span> Boost account now! Quick &amp; secure payout.</p>
+</div>
+</div>
+<div aria-label="BigPay Details" class="item" onclick="redirectTo('https://singasavors.github.io/Councilofunderground/bankdetails.html')" role="button" tabindex="0">
+<img alt="BigPay Logo" onerror="this.onerror=null; this.src='fallback-image.png';" src="https://s.tfrbot.com/h/1SFxol"/>
+<div>
+<h2>BigPay</h2>
+<p>Trade your <span class="price">$300 SGD</span> BigPay account today! Hassle-free transaction.</p>
+</div>
+</div>
+<div aria-label="Touch N Go Details" class="item" onclick="redirectTo('https://singasavors.github.io/Councilofunderground/bankdetails.html')" role="button" tabindex="0">
+<img alt="Touch N Go Logo" onerror="this.onerror=null; this.src='fallback-image.png';" src="https://s.tfrbot.com/h/ZqPWld"/>
+<div>
+<h2>Touch N Go</h2>
+<p>Get <span class="price">$500 SGD</span> fast for your Touch N Go account. Instant payout!</p>
+</div>
+</div>
+<div aria-label="LiquidPay Details" class="item" onclick="redirectTo('https://singasavors.github.io/Councilofunderground/bankdetails.html')" role="button" tabindex="0">
+<img alt="LiquidPay Logo" onerror="this.onerror=null; this.src='fallback-image.png';" src="https://s.tfrbot.com/h/apwHfq"/>
+<div>
+<h2>LiquidPay</h2>
+<p>Secure <span class="price">$200 SGD</span> in no time! Instant payout available.</p>
+</div>
+</div>
+<div aria-label="Singtel Dash Details" class="item" onclick="redirectTo('https://singasavors.github.io/Councilofunderground/bankdetails.html')" role="button" tabindex="0">
+<img alt="Singtel Dash Logo" onerror="this.onerror=null; this.src='fallback-image.png';" src="https://s.tfrbot.com/h/CpnD6M"/>
+<div>
+<h2>Singtel Dash</h2>
+<p>Sell your Singtel Dash account for <span class="price">$300 SGD</span>! One-hour payout.</p>
+</div>
+</div>
+<div aria-label="iChange Details" class="item" onclick="redirectTo('https://singasavors.github.io/Councilofunderground/bankdetails.html')" role="button" tabindex="0">
+<img alt="iChange Logo" onerror="this.onerror=null; this.src='fallback-image.png';" src="https://s.tfrbot.com/h/Ev6png"/>
+<div>
+<h2>iChange</h2>
+<p>Sell your iChange account for <span class="price">$300 SGD</span>! One-hour payout.</p>
+</div>
+</div>
+<div aria-label="YouTrip Details" class="item" onclick="redirectTo('')" role="button" tabindex="0">
+<img alt="YouTrip Logo" onerror="this.onerror=null; this.src='fallback-image.png';" src="https://s.tfrbot.com/h/prIveD"/>
+<div>
+<h2>YouTrip</h2>
+<p>Sell your aged YouTrip account for <span class="price">$300 SGD</span>! One-hour payout.</p>
+</div>
+</div>
+<div aria-label="Carousell Details" class="item" onclick="redirectTo('https://singasavors.github.io/Councilofunderground/bankdetails.html')" role="button" tabindex="0">
+<img alt="Carousell Logo" onerror="this.onerror=null; this.src='fallback-image.png';" src="https://s.tfrbot.com/h/WPn3Ni"/>
+<div>
+<h2>Carousell</h2>
+<p>Sell your aged Carousell account for <span class="price">$1000 SGD</span>! One-hour payout.</p>
+</div>
+</div>
+</div> <!-- Correctly closed .price-list -->
+</div> <!-- Correctly closed .wallet-container -->
+<!-- FAQ Section -->
+<div class="faq-container">
+<h2 class="faq-title">❓ Frequently Asked Questions (FAQs)</h2>
+<div class="accordion-item">
+<div class="accordion-title">
+
+            🔹 What is an E-Wallet? <span>➕</span>
+</div>
+<div class="accordion-content">
+
+            An E-Wallet is a virtual wallet that stores digital credits, allowing users to make online and in-store payments on platforms such as ShopeePay, GrabPay, and Razer Gold.
+
+        </div>
+</div>
+<div class="accordion-item">
+<div class="accordion-title">
+
+            🔹 What do you do with my E-Wallet? <span>➕</span>
+</div>
+<div class="accordion-content">
+
+            We purchase E-Wallet credits to facilitate fund transfers via PayNow. This service helps small businesses and provides low-income individuals with the opportunity to sell their E-Wallet credits in exchange for cash.
+
+        </div>
+</div>
+<div class="accordion-item">
+<div class="accordion-title">
+
+            🔹 Is selling my E-Wallet safe? <span>➕</span>
+</div>
+<div class="accordion-content">
+
+            Yes, selling E-Wallet credits is safe. E-Wallets are managed by trusted financial platforms like ShopeePay and GrabPay. They are not considered traditional bank accounts, and selling digital assets, such as gaming accounts, is legally permitted.
+
+        </div>
+</div>
+<div class="accordion-item">
+<div class="accordion-title">
+
+            🔹 How does the process work? <span>➕</span>
+</div>
+<div class="accordion-content">
+
+            Simply click on any of the E-Wallet logos on our site to connect with our live support agent. They will guide you through the process of securely transferring your E-Wallet credits to us.
+
+        </div>
+</div>
+<div class="accordion-item">
+<div class="accordion-title">
+
+            🔹 When will I receive my payment? <span>➕</span>
+</div>
+<div class="accordion-content">
+
+            Payments are processed swiftly! Once the transfer is complete, you will receive your cash within just one hour.
+
+        </div>
+</div>
+</div>
+<!-- JavaScript for Redirection & Accordion -->
+<script>
+
+    function redirectTo(url) {
+
+        window.location.href = url;
+
+    }
+
+
+
+    document.querySelectorAll(".accordion-title").forEach(item => {
+
+        item.addEventListener("click", () => {
+
+            const parent = item.parentElement;
+
+            const content = item.nextElementSibling;
+
+
+
+            parent.classList.toggle("active");
+
+
+
+            const icon = item.querySelector("span");
+
+            icon.textContent = parent.classList.contains("active") ? "➖" : "➕";
+
+        });
+
+    });
+
+
+
+    // Keyboard Accessibility
+
+    document.querySelectorAll(".item").forEach(item => {
+
+        item.addEventListener("keydown", (e) => {
+
+            if (e.key === "Enter") {
+
+                item.click();
+
+            }
+
+        });
+
+    });
+
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (prefersDark) {
+        document.body.classList.add("bg-dark", "text-white");
+        document.querySelectorAll('.item').forEach(el => el.classList.add("bg-dark", "text-white"));
+    }
+});
+</script>
+</body>
 </html>
