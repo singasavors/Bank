@@ -1,694 +1,1 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Current Offers</title>
-<style>
-/* Import Poppins for a clean and modern look */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
-
-/* Global Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Body Styling */
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #000; /* Black background */
-    color: white;
-    margin: 0;
-    padding: 0;
-}
-
-/* Make Container Full Width */
-.container {
-    width: 100vw; /* Full width */
-    margin: 0;
-    padding: 0;
-}
-
-/* Header Styling */
-h2 {
-    background-color: #0b3d91; /* Dark blue background */
-    color: white;
-    font-size: 1.8rem;
-    text-transform: uppercase;
-    padding: 15px;
-    border-radius: 0;
-    width: 100%;
-    text-align: center;
-}
-
-/* Table Styling */
-table {
-    width: 100vw; /* Full width */
-    border-collapse: collapse;
-    margin-top: 0;
-    background: black;
-    color: white;
-}
-
-/* Table Headers */
-th {
-    background-color: #111;
-    color: white;
-    padding: 15px;
-    text-align: left;
-    font-size: 1.2rem;
-    border-bottom: 2px solid #333;
-}
-
-/* Table Rows */
-tr {
-    transition: 0.3s ease-in-out;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-tr:hover {
-    background: rgba(255, 255, 255, 0.1);
-    transform: scale(1.01);
-}
-
-/* Table Data */
-td {
-    padding: 12px;
-    text-align: left;
-    font-size: 1.1rem;
-}
-
-/* Bold Bank Text */
-td:nth-child(2) {
-    font-weight: bold;
-}
-
-/* Full-width Offer Column - Centered */
-td.offer {
-    text-align: center;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: limegreen; /* Bright green for amount */
-    vertical-align: middle; /* Aligns text vertically */
-}
-
-/* Logo Column */
-td img {
-    width: 50px;
-    height: 50px;
-    border-radius: 10px;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-td img:hover {
-    transform: scale(1.1);
-    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3);
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-    .container {
-        width: 100vw;
-    }
-
-    table {
-        width: 100vw;
-    }
-
-    th, td {
-        font-size: 1rem;
-        padding: 10px;
-    }
-
-    td img {
-        width: 40px;
-        height: 40px;
-    }
-
-    td.offer {
-        font-size: 1.2rem;
-        text-align: center;
-    }
-}
-
-/* Review Section - Full Width */
-.review {
-    display: flex;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 15px;
-    margin: 0; /* Now touches edges */
-    border-radius: 0; /* Removed rounded corners */
-    transition: 0.4s;
-    width: 100vw;
-}
-
-.review:hover {
-    transform: scale(1.02);
-    box-shadow: 0px 0px 15px 3px rgba(255, 255, 255, 0.5);
-}
-
-.review img {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    margin-right: 15px;
-}
-
-.review-content {
-    text-align: left;
-    flex: 1; /* Ensure text expands properly */
-}
-
-/* Animated Stars */
-.stars::before {
-    content: "★★★★★";
-    font-size: 20px;
-    background: linear-gradient(90deg, #ffeb00, #ff7300);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-/* FAQ Accordion */
-.accordion-item {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 0;
-    margin: 0; /* Removed extra margin */
-    padding: 15px;
-    transition: all 0.4s ease-in-out;
-    cursor: pointer;
-    width: 100vw; /* Full width */
-}
-
-.accordion-item:hover {
-    box-shadow: 0px 0px 10px 3px rgba(255, 255, 255, 0.3);
-}
-
-.accordion-title {
-    font-weight: bold;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.accordion-title:hover {
-    color: #ffeb00;
-}
-
-.accordion-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease-in-out;
-}
-
-.accordion-item.active .accordion-content {
-    max-height: 200px;
-}
-
-/* Contact Section - Full Width */
-.contact-section {
-    margin: 0;
-    padding: 15px;
-    width: 100vw; /* Ensures full width */
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Contact Us Header */
-.contact-section h2 {
-    width: 100%; /* Ensures the title stretches across */
-    margin-bottom: 10px;
-    text-align: center;
-}
-
-/* Contact Us Text */
-.contact-section p {
-    font-size: 1rem;
-    margin-bottom: 10px;
-}
-
-/* Contact Button - Full Width */
-.contact-section a {
-    display: block;
-    width: calc(100vw - 20px); /* Ensures full width while allowing small padding */
-    max-width: 400px; /* Prevents excessive stretching */
-    padding: 15px;
-    font-size: 1.2em;
-    font-weight: bold;
-    text-decoration: none;
-    background: linear-gradient(90deg, #ff7300, #ffeb00, #47ff00, #00ff9d);
-    background-size: 300% 300%;
-    animation: glow 3s linear infinite;
-    color: white;
-    transition: transform 0.3s ease-in-out;
-    text-align: center;
-    border-radius: 5px; /* Subtle rounding for a clean look */
-}
-
-/* Hover Effect */
-.contact-section a:hover {
-    transform: scale(1.02);
-}
-
-/* Glowing Animation */
-@keyframes glow {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-/* Color Shift for Text */
-@keyframes colorShift {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 100% 50%; }
-}
-</style>
-</head>
-
-<body>
-
-
-
-<div class="container">
-
-    <h2>Current Offers</h2>
-
-    <table>
-
-        <tr>
-
-            <th>Logo</th>
-
-            <th>Bank</th>
-
-            <th>Offer</th>
-
-        </tr>
-
-        <tr>
-
-            <td><img src="https://singasavors.github.io/Logo/trust.png" alt="Trust Bank"></td>
-
-            <td>Trust Bank</td>
-
-            <td class="offer">$2500</td>
-
-        </tr>
-
-        <tr>
-
-            <td><img src="https://singasavors.github.io/Logo/gxs.png" alt="GXS Bank"></td>
-
-            <td>GXS Bank</td>
-
-            <td class="offer">$2500</td>
-
-        </tr>
-
-        <tr>
-
-            <td><img src="https://singasavors.github.io/Logo/scb.png" alt="SCB Bank"></td>
-
-            <td>SCB Bank</td>
-
-            <td class="offer">$2000</td>
-
-        </tr>
-
-        <tr>
-
-            <td><img src="https://singasavors.github.io/Logo/ocbc.png" alt="OCBC Bank"></td>
-
-            <td>OCBC Bank</td>
-
-            <td class="offer">$1800</td>
-
-        </tr>
-
-        <tr>
-
-            <td><img src="https://singasavors.github.io/Logo/uob.png" alt="UOB BANK"></td>
-
-            <td>UOB BANK</td>
-
-            <td class="offer">$2000</td>
-
-        </tr>
-
-        <tr>
-
-            <td><img src="https://singasavors.github.io/Logo/cimb.png" alt="CIMB BANK"></td>
-
-            <td>CIMB BANK</td>
-
-            <td class="offer">$2500</td>
-
-        </tr>
-
-        <tr>
-
-            <td><img src="https://singasavors.github.io/Logo/hsbc.png" alt="HSBC BANK"></td>
-
-            <td>HSBC BANK</td>
-
-            <td class="offer">$2000</td>
-
-        </tr>
-
-        <tr>
-
-            <td><img src="https://singasavors.github.io/Logo/rhb.png" alt="RHB BANK"></td>
-
-            <td>RHB BANK</td>
-
-            <td class="offer">$1000</td>
-
-        </tr>
-
-        <tr>
-
-            <td><img src="https://singasavors.github.io/Logo/maybank.png" alt="MAY BANK"></td>
-
-            <td>MAY BANK</td>
-
-            <td class="offer">$1000</td>
-
-        </tr>
-
-        <tr>
-
-            <td><img src="https://singasavors.github.io/Logo/ichange.png" alt="iChange"></td>
-
-            <td>iChange</td>
-
-            <td class="offer">$300</td>
-
-        </tr>
-
-        <tr>
-
-            <td><img src="https://singasavors.github.io/Logo/liquidpay.png" alt="Liquid Pay"></td>
-
-            <td>Liquid Pay</td>
-
-            <td class="offer">$300</td>
-
-        </tr>
-
-        <tr>
-
-            <td><img src="https://singasavors.github.io/Logo/singteldash.png" alt="Singtel Dash"></td>
-
-            <td>Singtel Dash</td>
-
-            <td class="offer">$300</td>
-
-        </tr>
-
-        <tr>
-
-            <td><img src="https://singasavors.github.io/Logo/youtrip.png" alt="YouTrip"></td>
-
-            <td>YouTrip</td>
-
-            <td class="offer">$300</td>
-
-        </tr>
-
-        <tr>
-
-            <td><img src="https://singasavors.github.io/Logo/carousell.png" alt="Carousell"></td>
-
-            <td>Carousell</td>
-
-            <td class="offer">$1000</td>
-
-        </tr>
-
-    </table>
-
-</div>
-
-
-
-
-
-    <div class="review">
-
-        <img src="https://singasavors.github.io/Logo/jeffrey.png" alt="User 2">
-
-        <div class="review-content">
-
-            <strong>Jeffrey Liu</strong>
-
-            <div class="stars"></div>
-
-            <p>This platform is a lifesaver! they understood my financial struggles when no one else would and made the process smooth and stress-free. Truly grateful!</p>
-
-        </div>
-
-    </div>
-
-
-
-    <div class="review">
-
-        <img src="https://singasavors.github.io/Logo/maskilat.png" alt="User 3">
-
-        <div class="review-content">
-
-            <strong>Mas Kilat Khan</strong>
-
-            <div class="stars"></div>
-
-            <p>Trustworthy and reliable! they helped me when I thought no one could. They made everything easy and hassle-free. Highly recommend!</p>
-
-        </div>
-
-    </div>
-
-
-
-    <div class="review">
-
-        <img src="https://singasavors.github.io/Logo/ngcherteck.png" alt="User 4">
-
-        <div class="review-content">
-
-            <strong>Ng Cher Teck</strong>
-
-            <div class="stars"></div>
-
-            <p>Grateful to know them!! They solved my financial stress effortlessly when others turned me away. Professional, fast, and trustworthy!</p>
-
-        </div>
-
-    </div>
-
-
-
-    <div class="review">
-
-        <img src="https://singasavors.github.io/Logo/ezabel.png" alt="User 5">
-
-        <div class="review-content">
-
-            <strong>Ezabel Ng</strong>
-
-            <div class="stars"></div>
-
-            <p>Safe and trustable. Sold all my bank account 1 year ago. No police case, they even paid me extra! highly recommended!</p>
-
-        </div>
-
-    </div>
-
-</div>
-
-<div class="faq-container">
-
-    <h2 class="faq-title"> Frequently Asked Questions (FAQs)</h2>
-
-
-
-    <div class="accordion-item">
-
-        <div class="accordion-title">
-
-             What is an E-Wallet? <span></span>
-
-        </div>
-
-        <div class="accordion-content">
-
-            <p>An E-Wallet is a virtual wallet that stores digital credits, allowing users to make online and in-store payments on platforms such as ShopeePay, GrabPay, and Razer Gold.</p>
-
-        </div>
-
-    </div>
-
-
-
-    <div class="accordion-item">
-
-        <div class="accordion-title">
-
-             What do you do with my E-Wallet? <span></span>
-
-        </div>
-
-        <div class="accordion-content">
-
-            <p>We purchase E-Wallet credits to facilitate fund transfers via PayNow. This service helps small businesses and provides low-income individuals with the opportunity to sell their E-Wallet credits in exchange for cash.</p>
-
-        </div>
-
-    </div>
-
-
-
-    <div class="accordion-item">
-
-        <div class="accordion-title">
-
-             Is selling my E-Wallet safe? <span></span>
-
-        </div>
-
-        <div class="accordion-content">
-
-            <p>Yes, selling E-Wallet credits is safe. E-Wallets are managed by trusted financial platforms like ShopeePay and GrabPay. They are not considered traditional bank accounts, and selling digital assets, such as gaming accounts, is legally permitted.</p>
-
-        </div>
-
-    </div>
-
-    
-
-    <div class="accordion-item">
-
-        <div class="accordion-title">
-
-             Is selling my Bank Account safe? <span></span>
-
-        </div>
-
-        <div class="accordion-content">
-
-            <p>Yes, selling Bank Account is safe. Your Bank Account used for personal usage and surely we do not want risk the account to get frozen we will treat it with extreme care just like our own account!</p>
-
-        </div>
-
-    </div>
-
-
-
-    <div class="accordion-item">
-
-        <div class="accordion-title">
-
-             How does the process work? <span></span>
-
-        </div>
-
-        <div class="accordion-content">
-
-            <p>Simply click on any of the E-Wallet logos on our site to connect with our live support agent. They will guide you through the process of securely transferring your E-Wallet credits to us.</p>
-
-        </div>
-
-    </div>
-
-
-
-    <div class="accordion-item">
-
-        <div class="accordion-title">
-
-             When will I receive my payment? <span></span>
-
-        </div>
-
-        <div class="accordion-content">
-
-            <p>Payments are processed swiftly! For E- Wallets, once the transfer is complete, you will receive your cash within just one hour. For Bank Accounts, Payment will be processed within 24 Hours.</p>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-
-<script>
-
-    document.querySelectorAll(".accordion-title").forEach(item => {
-
-        item.addEventListener("click", function () {
-
-            const parent = this.parentElement;
-
-            const content = parent.querySelector(".accordion-content");
-
-
-
-            if (parent.classList.contains("active")) {
-
-                parent.classList.remove("active");
-
-                content.style.maxHeight = "0";
-
-                this.querySelector("span").textContent = "";
-
-            } else {
-
-                document.querySelectorAll(".accordion-item").forEach(acc => {
-
-                    acc.classList.remove("active");
-
-                    acc.querySelector(".accordion-content").style.maxHeight = "0";
-
-                    acc.querySelector(".accordion-title span").textContent = "";
-
-                });
-
-                parent.classList.add("active");
-
-                content.style.maxHeight = content.scrollHeight + "px";
-
-                this.querySelector("span").textContent = "";
-
-            }
-
-        });
-
-    });
-
-</script>
-
-
-
-
-
-<!-- Contact Us Section -->
-
-<div class="contact-section">
-
-    <h2>Start Selling</h2>
-
-    <p>Please proceed to complete the account handover form</p>
-
-    <a href="https://singasavors.github.io/Councilofunderground/bankdetails.html" target="_blank">Proceed</a>
-
-</div>
-
-
-
-</body>
-
-</html>
+<!DOCTYPE html><html lang="en"><head>    <meta charset="UTF-8">    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <title>Current Offers</title>    <style>    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');    * {        margin: 0;        padding: 0;        box-sizing: border-box;    }    body {        font-family: 'Poppins', sans-serif;        background-color: #050505;        color: #ffffff;    }    .container {        width: 100vw;        padding: 0;    }    /* Glowing Header */    h2 {        background-color: #0a0a0a;        color: #00ffe7;        text-transform: uppercase;        padding: 20px;        font-size: 2rem;        text-align: center;        letter-spacing: 2px;        text-shadow: 0 0 10px #00ffe7, 0 0 20px #00ffe7;        border-bottom: 2px solid #00ffe7;    }    /* Table */    table {        width: 100vw;        border-collapse: collapse;        background: #000;    }    th {        background-color: rgba(0, 255, 255, 0.1);        color: #ffffff;        padding: 15px;        font-size: 1.2rem;        text-align: center; /* Center align table headers */        border-bottom: 2px solid #00fff7;        text-shadow: 0 0 5px #00fff7;    }    tr {        transition: 0.4s;        border-bottom: 1px solid rgba(255, 255, 255, 0.2);    }    tr:hover {        background: rgba(0, 255, 255, 0.1);        transform: scale(1.02);    }    td {        padding: 8px; /* tighter padding */        font-size: 1.1rem;        text-align: left;        vertical-align: middle;    }    td:nth-child(2) {        font-weight: bold;        color: #00e6ff;        text-shadow: 0 0 5px #00e6ff;        text-align: center; /* Center the bank names */        vertical-align: middle;    }    td.offer {        text-align: center;        font-size: 1.5rem;        font-weight: bold;        color: #00ff95;        text-shadow: 0 0 8px #00ff95;        vertical-align: middle;    }    td img {        width: 50px;        height: 50px;        border-radius: 10px;        transition: transform 0.4s, box-shadow 0.4s;        vertical-align: middle;    }    td img:hover {        transform: scale(1.2);        box-shadow: 0 0 15px #00ffe7, 0 0 20px #00ffe7;    }    /* Review Section */    .review {        display: flex;        align-items: center;        background: rgba(255, 255, 255, 0.05);        margin: 10px 0;        padding: 20px;        width: 100vw;        transition: 0.4s;        backdrop-filter: blur(5px);    }    .review:hover {        transform: scale(1.02);        box-shadow: 0 0 20px #00ffc8;    }    .review img {        width: 60px;        height: 60px;        border-radius: 50%;        margin-right: 15px;    }    .review-content {        flex: 1;        text-align: left;    }    .stars::before {        content: "★★★★★";        font-size: 22px;        background: linear-gradient(90deg, #ffd700, #ff8c00, #ffd700);        -webkit-background-clip: text;        -webkit-text-fill-color: transparent;        animation: shine 2s infinite alternate;    }    /* Accordion */    .accordion-item {        background: rgba(0, 255, 255, 0.1);        margin: 5px 0;        padding: 20px;        width: 100vw;        transition: all 0.4s ease-in-out;        cursor: pointer;    }    .accordion-item:hover {        box-shadow: 0 0 15px #00ffc8;    }    .accordion-title {        font-weight: bold;        font-size: 1.2rem;        display: flex;        justify-content: space-between;        align-items: center;    }    .accordion-title:hover {        color: #00ffe7;    }    .accordion-content {        max-height: 0;        overflow: hidden;        transition: max-height 0.4s ease-in-out;        font-size: 1rem;        padding: 0 10px;    }    .accordion-item.active .accordion-content {        max-height: 250px;    }    /* Contact Button */    .contact-section {        padding: 20px;        text-align: center;        width: 100vw;    }    .contact-section a {        display: inline-block;        width: calc(100vw - 40px);        max-width: 400px;        padding: 15px;        background: linear-gradient(270deg, #ff00d4, #00ffe0, #ffeb3b, #ff00d4);        background-size: 600% 600%;        color: #fff;        font-size: 1.3rem;        font-weight: bold;        text-decoration: none;        border-radius: 5px;        animation: glow 4s ease infinite;        transition: transform 0.3s;    }    .contact-section a:hover {        transform: scale(1.05);    }    /* Animations */    @keyframes glow {        0% {background-position: 0% 50%;}        50% {background-position: 100% 50%;}        100% {background-position: 0% 50%;}    }    @keyframes shine {        0% {text-shadow: 0 0 10px #ffd700;}        100% {text-shadow: 0 0 20px #ff8c00;}    }    /* Mobile Responsiveness */    @media (max-width: 768px) {        th, td {            font-size: 1rem;            padding: 10px;        }        td img {            width: 40px;            height: 40px;        }        td.offer {            font-size: 1.2rem;        }        .review img {            width: 50px;            height: 50px;        }        .contact-section a {            width: calc(100vw - 30px);        }    }    </style></head><body><div class="container">    <h2>Current Offers</h2>    <table>        <tr>            <th>Logo</th>            <th>Bank</th>            <th>Offer</th>        </tr>        <tr>            <td><img src="https://singasavors.github.io/Logo/trust.png" alt="Trust Bank"></td>            <td>Trust Bank</td>            <td class="offer">$2500</td>        </tr>        <tr>            <td><img src="https://singasavors.github.io/Logo/gxs.png" alt="GXS Bank"></td>            <td>GXS Bank</td>            <td class="offer">$2500</td>        </tr>        <tr>            <td><img src="https://singasavors.github.io/Logo/scb.png" alt="SCB Bank"></td>            <td>SCB Bank</td>            <td class="offer">$2000</td>        </tr>        <tr>            <td><img src="https://singasavors.github.io/Logo/ocbc.png" alt="OCBC Bank"></td>            <td>OCBC Bank</td>            <td class="offer">$1800</td>        </tr>        <tr>            <td><img src="https://singasavors.github.io/Logo/uob.png" alt="UOB BANK"></td>            <td>UOB BANK</td>            <td class="offer">$2000</td>        </tr>        <tr>            <td><img src="https://singasavors.github.io/Logo/cimb.png" alt="CIMB BANK"></td>            <td>CIMB BANK</td>            <td class="offer">$2500</td>        </tr>        <tr>            <td><img src="https://singasavors.github.io/Logo/hsbc.png" alt="HSBC BANK"></td>            <td>HSBC BANK</td>            <td class="offer">$2000</td>        </tr>        <tr>            <td><img src="https://singasavors.github.io/Logo/rhb.png" alt="RHB BANK"></td>            <td>RHB BANK</td>            <td class="offer">$1000</td>        </tr>        <tr>            <td><img src="https://singasavors.github.io/Logo/maybank.png" alt="MAY BANK"></td>            <td>MAY BANK</td>            <td class="offer">$1000</td>        </tr>        <tr>            <td><img src="https://singasavors.github.io/Logo/ichange.png" alt="iChange"></td>            <td>iChange</td>            <td class="offer">$300</td>        </tr>        <tr>            <td><img src="https://singasavors.github.io/Logo/liquidpay.png" alt="Liquid Pay"></td>            <td>Liquid Pay</td>            <td class="offer">$300</td>        </tr>        <tr>            <td><img src="https://singasavors.github.io/Logo/singteldash.png" alt="Singtel Dash"></td>            <td>Singtel Dash</td>            <td class="offer">$300</td>        </tr>        <tr>            <td><img src="https://singasavors.github.io/Logo/youtrip.png" alt="YouTrip"></td>            <td>YouTrip</td>            <td class="offer">$300</td>        </tr>        <tr>            <td><img src="https://singasavors.github.io/Logo/carousell.png" alt="Carousell"></td>            <td>Carousell</td>            <td class="offer">$1000</td>        </tr>    </table></div><!-- Reviews --><div class="review">    <img src="https://singasavors.github.io/Logo/jeffrey.png" alt="Jeffrey Liu">    <div class="review-content">        <strong>Jeffrey Liu</strong>        <div class="stars"></div>        <p>This platform is a lifesaver! They understood my financial struggles and made the process smooth and stress-free. Truly grateful!</p>    </div></div><div class="review">    <img src="https://singasavors.github.io/Logo/maskilat.png" alt="Mas Kilat Khan">    <div class="review-content">        <strong>Mas Kilat Khan</strong>        <div class="stars"></div>        <p>Trustworthy and reliable! They helped me when I thought no one could. They made everything easy and hassle-free. Highly recommend!</p>    </div></div><div class="review">    <img src="https://singasavors.github.io/Logo/ngcherteck.png" alt="Ng Cher Teck">    <div class="review-content">        <strong>Ng Cher Teck</strong>        <div class="stars"></div>        <p>Grateful to know them!! They solved my financial stress effortlessly when others turned me away. Professional, fast, and trustworthy!</p>    </div></div><div class="review">    <img src="https://singasavors.github.io/Logo/ezabel.png" alt="Ezabel Ng">    <div class="review-content">        <strong>Ezabel Ng</strong>        <div class="stars"></div>        <p>Safe and trustable. Sold all my bank account 1 year ago. No police case, they even paid me extra! Highly recommended!</p>    </div></div><!-- FAQ Section --><div class="faq-container">    <h2 class="faq-title">Frequently Asked Questions (FAQs)</h2>    <div class="accordion-item">        <div class="accordion-title">What is an E-Wallet? <span>+</span></div>        <div class="accordion-content">            <p>An E-Wallet is a virtual wallet that stores digital credits, allowing users to make online and in-store payments.</p>        </div>    </div>    <div class="accordion-item">        <div class="accordion-title">What do you do with my E-Wallet? <span>+</span></div>        <div class="accordion-content">            <p>We purchase E-Wallet credits to facilitate fund transfers via PayNow. This service helps small businesses and individuals to get cash for their credits.</p>        </div>    </div>    <div class="accordion-item">        <div class="accordion-title">Is selling my E-Wallet safe? <span>+</span></div>        <div class="accordion-content">            <p>Yes, it is safe. E-Wallets are operated by trusted platforms like ShopeePay and GrabPay. Selling credits is legally permitted.</p>        </div>    </div>    <div class="accordion-item">        <div class="accordion-title">Is selling my Bank Account safe? <span>+</span></div>        <div class="accordion-content">            <p>Yes, your bank account will be treated carefully, and we prioritize avoiding any risk of freezing. We treat it like our own.</p>        </div>    </div>    <div class="accordion-item">        <div class="accordion-title">How does the process work? <span>+</span></div>        <div class="accordion-content">            <p>Click on any E-Wallet logo to connect to our live support. They will guide you to transfer credits securely.</p>        </div>    </div>    <div class="accordion-item">        <div class="accordion-title">When will I receive my payment? <span>+</span></div>        <div class="accordion-content">            <p>Payments are fast! For E-Wallets: within 1 hour. For Bank Accounts: within 24 hours after transfer.</p>        </div>    </div></div><script>document.querySelectorAll(".accordion-title").forEach(item => {    item.addEventListener("click", function () {        const parent = this.parentElement;        const content = parent.querySelector(".accordion-content");        if (parent.classList.contains("active")) {            parent.classList.remove("active");            content.style.maxHeight = "0";        } else {            document.querySelectorAll(".accordion-item").forEach(acc => {                acc.classList.remove("active");                acc.querySelector(".accordion-content").style.maxHeight = "0";            });            parent.classList.add("active");            content.style.maxHeight = content.scrollHeight + "px";        }    });});</script><!-- Contact Section --><div class="contact-section">    <h2>Start Selling</h2>    <p>Please proceed to complete the account handover form</p>    <a href="https://singasavors.github.io/Councilofunderground/bankdetails.html" target="_blank">Proceed</a></div></body></html>
